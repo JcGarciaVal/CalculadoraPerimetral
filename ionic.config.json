@@ -1,0 +1,7 @@
+{
+  "name": "CalculadoraPerimetral",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

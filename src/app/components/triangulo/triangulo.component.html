@@ -1,0 +1,46 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Triángulo</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-select label="Tipo de Triángulo" [(ngModel)]="tipoTriangulo">
+        <ion-select-option value="escaleno">Escaleno (3 lados diferentes)</ion-select-option>
+        <ion-select-option value="equilatero">Equilátero (3 lados iguales)</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="contenedor" *ngIf="tipoTriangulo === 'equilatero'">
+      <ion-img class="img" src="assets/trianguloequilatero.png" alt="triangulo equilatero"></ion-img>
+      <p>El triangulo equilatero tiene todos sus lados iguales, lo cual hace que como son 3 lado el valor de cualquiera de estos se multiplique por 3.</p>
+      <ion-item>
+        <ion-input type="number" label="Lado (cm)" [(ngModel)]="ladoEquilatero"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="contenedor" *ngIf="tipoTriangulo === 'escaleno'">
+      <ion-img class="img" src="assets/trianguloescaleno.png" alt="triangulo escaleno"></ion-img>
+      <p>El triangulo escaleno tiene todos sus lados distintos, lo cual hace que se multiplique cada uno de sus lados.</p>
+      <ion-item>
+        <ion-input type="number" label="Lado A (cm)" [(ngModel)]="ladoA"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" label="Lado B (cm)" [(ngModel)]="ladoB"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" label="Lado C (cm)" [(ngModel)]="ladoC"></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="calcular()">
+      Calcular Perímetro
+    </ion-button>
+
+    <div *ngIf="resultadoPerimetro !== null" class="ion-margin-top">
+      
+      <ion-text color="success">
+        <h3>El perímetro es: {{ resultadoPerimetro | number:'1.2-2' }} cm</h3>
+      </ion-text>
+    </div>
+  </ion-card-content>
+</ion-card>
